@@ -303,8 +303,8 @@ jobs:
             echo "${VALID_LABELS}"
             
             # Extract label suggestions (last lines of output, one label per line)
-            # Filter out any non-label text and empty lines
-            RAW_SUGGESTIONS=$(echo "${BOB_OUTPUT}" | grep -v "^$" | tail -n 20 | grep -E "^[a-z0-9-]+$" || echo "")
+            # Remove markdown list markers and trim whitespace, allowing any valid label characters
+            RAW_SUGGESTIONS=$(echo "${BOB_OUTPUT}" | grep -v "^$" | tail -n 20 | sed -E 's/^[-*][[:space:]]*//' | sed -E 's/^[[:space:]]*//;s/[[:space:]]*$//' || echo "")
             
             # Validate each suggested label against repository labels
             VALIDATED_LABELS=""
