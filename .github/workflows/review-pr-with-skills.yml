@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
       issues: write
 
@@ -191,7 +191,7 @@ jobs:
             const fs = require('fs');
             let review = fs.readFileSync('/tmp/bob_review.md', 'utf8');
 
-            const MAX_LENGTH = 30000;
+            const MAX_LENGTH = 60000;
             if (review.length > MAX_LENGTH) {
               review = review.substring(0, MAX_LENGTH) + '\n\n---\n> Review truncated. Download full report from workflow artifacts.';
             }
