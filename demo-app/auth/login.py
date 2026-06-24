@@ -17,6 +17,8 @@ from utils.validators import InputValidator
 from auth.session import SessionManager
 
 
+# esto es una prueba..
+
 class LoginError(Exception):
     """Custom exception for login-related errors"""
     pass
